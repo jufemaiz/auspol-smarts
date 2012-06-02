@@ -15,7 +15,7 @@ people = {}
 
 # version="2.0" versus "2.2"
 # Step 1: for each, grab timestamp
-xml_files[0..0].each do |file|
+xml_files.each do |file|
   puts "Proccessing file #{file}"
   f = File.open(file)
   doc = Nokogiri::XML.parse(f.read())
@@ -30,7 +30,7 @@ xml_files[0..0].each do |file|
   period_number = header.xpath('period.no').inner_text.to_i
   
   doc.xpath('//talker').each do |talker|
-    speeches << { :date => date,
+    speeches << { :date => date.join('-'),
                :parliament_number => parliament_number,
                :session_number => session_number,
                :period_number => period_number,
@@ -39,7 +39,8 @@ xml_files[0..0].each do |file|
                :electorate => talker.xpath('electorate').inner_text,
                :party => talker.xpath('party').inner_text,
                :role => (talker.xpath('role').length > 0 ? talker.xpath('role').inner_text : ""),
-               :content => talker.parent.xpath('para').text}
+               :content => talker.parent.xpath('para').text + talker.parent.parent.xpath('talk.text/body/p').text
+               }
     
     id = talker.xpath('name.id').inner_text
     people[id] = { :name => talker.xpath('name[@role="metadata"]').inner_text,
@@ -64,7 +65,7 @@ people.each do |id, person|
 end
 
 speeches.sort{|x,y| x[:member_id] <=> y[:member_id]}.each do |speech|
-  puts speech.inspect
+  puts [speech[:date], speech[:electorate], speech[:party], speech[:content].size].join("\t")
   speech = Speech.new({
     :date => speech[:date], :parliament_number => speech[:parliament_number],
     :session_number => speech[:session_number], :period_number => speech[:period_number],
