@@ -1,0 +1,27 @@
+%h1 Listing bills
+
+%table
+  %tr
+    %th Title
+    %th Url
+    %th Lords
+    %th Session
+    %th Standingprefix
+    %th
+    %th
+    %th
+
+  - @bills.each do |bill|
+    %tr
+      %td= bill.title
+      %td= bill.url
+      %td= bill.lords
+      %td= bill.session
+      %td= bill.standingprefix
+      %td= link_to 'Show', bill
+      %td= link_to 'Edit', edit_bill_path(bill)
+      %td= link_to 'Destroy', bill, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Bill', new_bill_path

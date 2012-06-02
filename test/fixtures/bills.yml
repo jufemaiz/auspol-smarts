@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  url: MyString
+  lords: false
+  session: MyString
+  standingprefix: MyString
+
+two:
+  title: MyString
+  url: MyString
+  lords: false
+  session: MyString
+  standingprefix: MyString

@@ -1,0 +1,27 @@
+%h1 Listing pbc_members
+
+%table
+  %tr
+    %th Member
+    %th Chairman
+    %th Bill
+    %th Sitting
+    %th Attending
+    %th
+    %th
+    %th
+
+  - @pbc_members.each do |pbc_member|
+    %tr
+      %td= pbc_member.member
+      %td= pbc_member.chairman
+      %td= pbc_member.bill
+      %td= pbc_member.sitting
+      %td= pbc_member.attending
+      %td= link_to 'Show', pbc_member
+      %td= link_to 'Edit', edit_pbc_member_path(pbc_member)
+      %td= link_to 'Destroy', pbc_member, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Pbc member', new_pbc_member_path

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Indexbatch:
+  = @index_batch.indexbatch_id
+%p
+  %b Created:
+  = @index_batch.created
+
+= link_to 'Edit', edit_index_batch_path(@index_batch)
+\|
+= link_to 'Back', index_batches_path

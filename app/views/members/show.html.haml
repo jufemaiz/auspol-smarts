@@ -1,0 +1,45 @@
+%p#notice= notice
+
+%p
+  %b Member:
+  = @member.member_id
+%p
+  %b House:
+  = @member.house
+%p
+  %b First name:
+  = @member.first_name
+%p
+  %b Last name:
+  = @member.last_name
+%p
+  %b Constituency:
+  = @member.constituency
+%p
+  %b Party:
+  = @member.party
+%p
+  %b Entered house:
+  = @member.entered_house
+%p
+  %b Left house:
+  = @member.left_house
+%p
+  %b Enetered reason:
+  = @member.enetered_reason
+%p
+  %b Left reason:
+  = @member.left_reason
+%p
+  %b Person:
+  = @member.person_id
+%p
+  %b Title:
+  = @member.title
+%p
+  %b Lastupdate:
+  = @member.lastupdate
+
+= link_to 'Edit', edit_member_path(@member)
+\|
+= link_to 'Back', members_path

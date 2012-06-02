@@ -1,0 +1,31 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  member_id: 1
+  house: 1
+  first_name: MyString
+  last_name: MyString
+  constituency: MyString
+  party: MyString
+  entered_house: 2012-06-02
+  left_house: 2012-06-02
+  enetered_reason: MyString
+  left_reason: MyString
+  person_id: 1
+  title: MyString
+  lastupdate: 2012-06-02 12:57:37
+
+two:
+  member_id: 1
+  house: 1
+  first_name: MyString
+  last_name: MyString
+  constituency: MyString
+  party: MyString
+  entered_house: 2012-06-02
+  left_house: 2012-06-02
+  enetered_reason: MyString
+  left_reason: MyString
+  person_id: 1
+  title: MyString
+  lastupdate: 2012-06-02 12:57:37

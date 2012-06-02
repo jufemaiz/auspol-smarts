@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Member:
+  = @member_info.member
+%p
+  %b Data key:
+  = @member_info.data_key
+%p
+  %b Data value:
+  = @member_info.data_value
+%p
+  %b Lastupdate:
+  = @member_info.lastupdate
+
+= link_to 'Edit', edit_member_info_path(@member_info)
+\|
+= link_to 'Back', member_infos_path

@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @bill.title
+%p
+  %b Url:
+  = @bill.url
+%p
+  %b Lords:
+  = @bill.lords
+%p
+  %b Session:
+  = @bill.session
+%p
+  %b Standingprefix:
+  = @bill.standingprefix
+
+= link_to 'Edit', edit_bill_path(@bill)
+\|
+= link_to 'Back', bills_path

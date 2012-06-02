@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  person: 
+  data_key: MyString
+  data_value: MyText
+  lastupdate: 2012-06-02 12:58:09
+
+two:
+  person: 
+  data_key: MyString
+  data_value: MyText
+  lastupdate: 2012-06-02 12:58:09

@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Postcode:
+  = @postcode_lookup.postcode
+%p
+  %b Name:
+  = @postcode_lookup.name
+
+= link_to 'Edit', edit_postcode_lookup_path(@postcode_lookup)
+\|
+= link_to 'Back', postcode_lookups_path

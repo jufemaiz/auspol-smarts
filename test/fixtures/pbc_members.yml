@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  member: 
+  chairman: false
+  bill: 
+  sitting: MyString
+  attending: false
+
+two:
+  member: 
+  chairman: false
+  bill: 
+  sitting: MyString
+  attending: false

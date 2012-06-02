@@ -1,0 +1,16 @@
+= form_for @index_batch do |f|
+  -if @index_batch.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@index_batch.errors.count, "error")} prohibited this index_batch from being saved:"
+      %ul
+        - @index_batch.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :indexbatch_id
+    = f.number_field :indexbatch_id
+  .field
+    = f.label :created
+    = f.datetime_select :created
+  .actions
+    = f.submit 'Save'
