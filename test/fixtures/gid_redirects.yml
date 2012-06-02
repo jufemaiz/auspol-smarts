@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  gid_from: MyString
+  gid_to: MyString
+  hdate: 2012-06-02
+  major: 1
+
+two:
+  gid_from: MyString
+  gid_to: MyString
+  hdate: 2012-06-02
+  major: 1

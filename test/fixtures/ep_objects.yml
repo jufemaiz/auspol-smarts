@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  epobject_id: 1
+  title: MyString
+  body: MyText
+  type: 1
+
+two:
+  epobject_id: 1
+  title: MyString
+  body: MyText
+  type: 1

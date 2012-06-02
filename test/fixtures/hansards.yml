@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  epobject_id: 
+  git: MyString
+  htype: 1
+  speaker_id: 
+  major: 1
+  section_id: 1
+  subsection_id: 1
+  hpos: 1
+  hdate: 2012-06-02
+  htime: 2012-06-02 12:37:51
+  source_url: MyString
+  minor: 1
+
+two:
+  epobject_id: 
+  git: MyString
+  htype: 1
+  speaker_id: 
+  major: 1
+  section_id: 1
+  subsection_id: 1
+  hpos: 1
+  hdate: 2012-06-02
+  htime: 2012-06-02 12:37:51
+  source_url: MyString
+  minor: 1

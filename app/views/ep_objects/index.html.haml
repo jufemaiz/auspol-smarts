@@ -1,0 +1,25 @@
+%h1 Listing ep_objects
+
+%table
+  %tr
+    %th Epobject
+    %th Title
+    %th Body
+    %th Type
+    %th
+    %th
+    %th
+
+  - @ep_objects.each do |ep_object|
+    %tr
+      %td= ep_object.epobject_id
+      %td= ep_object.title
+      %td= ep_object.body
+      %td= ep_object.type
+      %td= link_to 'Show', ep_object
+      %td= link_to 'Edit', edit_ep_object_path(ep_object)
+      %td= link_to 'Destroy', ep_object, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Ep object', new_ep_object_path

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  generate: MyString
+  scaffold: MyString
+  ConsInfo: MyString
+  constituency: MyString
+  data_key: MyString
+  data_value: MyText
+
+two:
+  generate: MyString
+  scaffold: MyString
+  ConsInfo: MyString
+  constituency: MyString
+  data_key: MyString
+  data_value: MyText

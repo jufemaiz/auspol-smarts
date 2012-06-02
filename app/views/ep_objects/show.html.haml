@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Epobject:
+  = @ep_object.epobject_id
+%p
+  %b Title:
+  = @ep_object.title
+%p
+  %b Body:
+  = @ep_object.body
+%p
+  %b Type:
+  = @ep_object.type
+
+= link_to 'Edit', edit_ep_object_path(@ep_object)
+\|
+= link_to 'Back', ep_objects_path

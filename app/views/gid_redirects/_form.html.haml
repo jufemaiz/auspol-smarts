@@ -1,0 +1,22 @@
+= form_for @gid_redirect do |f|
+  -if @gid_redirect.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@gid_redirect.errors.count, "error")} prohibited this gid_redirect from being saved:"
+      %ul
+        - @gid_redirect.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :gid_from
+    = f.text_field :gid_from
+  .field
+    = f.label :gid_to
+    = f.text_field :gid_to
+  .field
+    = f.label :hdate
+    = f.date_select :hdate
+  .field
+    = f.label :major
+    = f.number_field :major
+  .actions
+    = f.submit 'Save'
