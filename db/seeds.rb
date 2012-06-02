@@ -5,3 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'csv'
+
+# Postcodes
+if PostcodeLookup.count == 0
+  CSV.foreach(File.join(Rails.root,'db','seeds','postcodes.csv'), {:headers => true}) do |row|
+    PostcodeLookup.create({:postcode =>row["postcode"] , :name => row["electoral_division_name"]}) if row.size == 2
+  end
+end

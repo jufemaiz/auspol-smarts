@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20120602025902) do
     t.datetime "updated_at",     :null => false
   end
 
-  create_table "cons_info", :force => true do |t|
+  create_table "cons_infos", :force => true do |t|
     t.string   "constituency"
     t.string   "data_key"
     t.text     "data_value"
@@ -34,8 +34,10 @@ ActiveRecord::Schema.define(:version => 20120602025902) do
   create_table "constituencies", :force => true do |t|
     t.string   "name"
     t.boolean  "main_name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.date     "from_date",  :default => '1000-01-01', :null => false
+    t.date     "to_date",    :default => '9999-12-31', :null => false
+    t.datetime "created_at",                           :null => false
+    t.datetime "updated_at",                           :null => false
   end
 
   create_table "ep_objects", :force => true do |t|
@@ -57,7 +59,7 @@ ActiveRecord::Schema.define(:version => 20120602025902) do
   end
 
   create_table "hansards", :force => true do |t|
-    t.integer  "epobject_id_id"
+    t.integer  "ep_object_id_id"
     t.string   "git"
     t.integer  "htype"
     t.integer  "speaker_id_id"
@@ -69,11 +71,11 @@ ActiveRecord::Schema.define(:version => 20120602025902) do
     t.time     "htime"
     t.string   "source_url"
     t.integer  "minor"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "hansards", ["epobject_id_id"], :name => "index_hansards_on_epobject_id_id"
+  add_index "hansards", ["ep_object_id_id"], :name => "index_hansards_on_ep_object_id_id"
   add_index "hansards", ["speaker_id_id"], :name => "index_hansards_on_speaker_id_id"
 
   create_table "index_batches", :force => true do |t|
@@ -84,7 +86,6 @@ ActiveRecord::Schema.define(:version => 20120602025902) do
   end
 
   create_table "m_offices", :force => true do |t|
-    t.integer  "moffice_id"
     t.string   "dept"
     t.string   "position"
     t.date     "from_date"
@@ -109,7 +110,6 @@ ActiveRecord::Schema.define(:version => 20120602025902) do
   add_index "member_infos", ["member_id"], :name => "index_member_infos_on_member_id"
 
   create_table "members", :force => true do |t|
-    t.integer  "member_id"
     t.integer  "house"
     t.string   "first_name"
     t.string   "last_name"
@@ -117,13 +117,12 @@ ActiveRecord::Schema.define(:version => 20120602025902) do
     t.string   "party"
     t.date     "entered_house"
     t.date     "left_house"
-    t.string   "enetered_reason"
+    t.string   "entered_reason"
     t.string   "left_reason"
     t.integer  "person_id"
     t.string   "title"
-    t.datetime "lastupdate"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "pbc_members", :force => true do |t|
