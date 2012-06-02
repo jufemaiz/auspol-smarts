@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  indexbatch_id: 1
+  created: 2012-06-02 12:58:30
+
+two:
+  indexbatch_id: 1
+  created: 2012-06-02 12:58:30

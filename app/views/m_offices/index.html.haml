@@ -1,0 +1,31 @@
+%h1 Listing m_offices
+
+%table
+  %tr
+    %th Moffice
+    %th Dept
+    %th Position
+    %th From date
+    %th To date
+    %th Person
+    %th Source
+    %th
+    %th
+    %th
+
+  - @m_offices.each do |m_office|
+    %tr
+      %td= m_office.moffice_id
+      %td= m_office.dept
+      %td= m_office.position
+      %td= m_office.from_date
+      %td= m_office.to_date
+      %td= m_office.person
+      %td= m_office.source
+      %td= link_to 'Show', m_office
+      %td= link_to 'Edit', edit_m_office_path(m_office)
+      %td= link_to 'Destroy', m_office, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New M office', new_m_office_path

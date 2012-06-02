@@ -1,0 +1,25 @@
+%h1 Listing member_infos
+
+%table
+  %tr
+    %th Member
+    %th Data key
+    %th Data value
+    %th Lastupdate
+    %th
+    %th
+    %th
+
+  - @member_infos.each do |member_info|
+    %tr
+      %td= member_info.member
+      %td= member_info.data_key
+      %td= member_info.data_value
+      %td= member_info.lastupdate
+      %td= link_to 'Show', member_info
+      %td= link_to 'Edit', edit_member_info_path(member_info)
+      %td= link_to 'Destroy', member_info, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Member info', new_member_info_path

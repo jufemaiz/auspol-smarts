@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Gid from:
+  = @gid_redirect.gid_from
+%p
+  %b Gid to:
+  = @gid_redirect.gid_to
+%p
+  %b Hdate:
+  = @gid_redirect.hdate
+%p
+  %b Major:
+  = @gid_redirect.major
+
+= link_to 'Edit', edit_gid_redirect_path(@gid_redirect)
+\|
+= link_to 'Back', gid_redirects_path

@@ -1,0 +1,16 @@
+= form_for @postcode_lookup do |f|
+  -if @postcode_lookup.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@postcode_lookup.errors.count, "error")} prohibited this postcode_lookup from being saved:"
+      %ul
+        - @postcode_lookup.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :postcode
+    = f.text_field :postcode
+  .field
+    = f.label :name
+    = f.text_field :name
+  .actions
+    = f.submit 'Save'

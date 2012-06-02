@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Moffice:
+  = @m_office.moffice_id
+%p
+  %b Dept:
+  = @m_office.dept
+%p
+  %b Position:
+  = @m_office.position
+%p
+  %b From date:
+  = @m_office.from_date
+%p
+  %b To date:
+  = @m_office.to_date
+%p
+  %b Person:
+  = @m_office.person
+%p
+  %b Source:
+  = @m_office.source
+
+= link_to 'Edit', edit_m_office_path(@m_office)
+\|
+= link_to 'Back', m_offices_path

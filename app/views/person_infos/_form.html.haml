@@ -1,0 +1,22 @@
+= form_for @person_info do |f|
+  -if @person_info.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@person_info.errors.count, "error")} prohibited this person_info from being saved:"
+      %ul
+        - @person_info.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :person
+    = f.text_field :person
+  .field
+    = f.label :data_key
+    = f.text_field :data_key
+  .field
+    = f.label :data_value
+    = f.text_area :data_value
+  .field
+    = f.label :lastupdate
+    = f.datetime_select :lastupdate
+  .actions
+    = f.submit 'Save'

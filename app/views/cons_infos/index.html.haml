@@ -1,0 +1,23 @@
+%h1 Listing cons_infos
+
+%table
+  %tr
+    %th Constituency
+    %th Data key
+    %th Data value
+    %th
+    %th
+    %th
+
+  - @cons_infos.each do |cons_info|
+    %tr
+      %td= cons_info.constituency
+      %td= cons_info.data_key
+      %td= cons_info.data_value
+      %td= link_to 'Show', cons_info
+      %td= link_to 'Edit', edit_cons_info_path(cons_info)
+      %td= link_to 'Destroy', cons_info, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Cons info', new_cons_info_path

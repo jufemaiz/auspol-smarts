@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  constituency: MyString
+  data_key: MyString
+  data_value: MyText
+
+two:
+  constituency: MyString
+  data_key: MyString
+  data_value: MyText

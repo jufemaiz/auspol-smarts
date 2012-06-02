@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  moffice_id: 1
+  dept: MyString
+  position: MyString
+  from_date: 2012-06-02
+  to_date: 2012-06-02
+  person: 
+  source: MyString
+
+two:
+  moffice_id: 1
+  dept: MyString
+  position: MyString
+  from_date: 2012-06-02
+  to_date: 2012-06-02
+  person: 
+  source: MyString

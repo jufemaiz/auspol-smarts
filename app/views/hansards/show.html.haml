@@ -1,0 +1,42 @@
+%p#notice= notice
+
+%p
+  %b Epobject:
+  = @hansard.epobject_id
+%p
+  %b Git:
+  = @hansard.git
+%p
+  %b Htype:
+  = @hansard.htype
+%p
+  %b Speaker:
+  = @hansard.speaker_id
+%p
+  %b Major:
+  = @hansard.major
+%p
+  %b Section:
+  = @hansard.section_id
+%p
+  %b Subsection:
+  = @hansard.subsection_id
+%p
+  %b Hpos:
+  = @hansard.hpos
+%p
+  %b Hdate:
+  = @hansard.hdate
+%p
+  %b Htime:
+  = @hansard.htime
+%p
+  %b Source url:
+  = @hansard.source_url
+%p
+  %b Minor:
+  = @hansard.minor
+
+= link_to 'Edit', edit_hansard_path(@hansard)
+\|
+= link_to 'Back', hansards_path

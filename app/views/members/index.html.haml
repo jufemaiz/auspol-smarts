@@ -1,0 +1,43 @@
+%h1 Listing members
+
+%table
+  %tr
+    %th Member
+    %th House
+    %th First name
+    %th Last name
+    %th Constituency
+    %th Party
+    %th Entered house
+    %th Left house
+    %th Enetered reason
+    %th Left reason
+    %th Person
+    %th Title
+    %th Lastupdate
+    %th
+    %th
+    %th
+
+  - @members.each do |member|
+    %tr
+      %td= member.member_id
+      %td= member.house
+      %td= member.first_name
+      %td= member.last_name
+      %td= member.constituency
+      %td= member.party
+      %td= member.entered_house
+      %td= member.left_house
+      %td= member.enetered_reason
+      %td= member.left_reason
+      %td= member.person_id
+      %td= member.title
+      %td= member.lastupdate
+      %td= link_to 'Show', member
+      %td= link_to 'Edit', edit_member_path(member)
+      %td= link_to 'Destroy', member, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Member', new_member_path

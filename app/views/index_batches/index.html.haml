@@ -1,0 +1,21 @@
+%h1 Listing index_batches
+
+%table
+  %tr
+    %th Indexbatch
+    %th Created
+    %th
+    %th
+    %th
+
+  - @index_batches.each do |index_batch|
+    %tr
+      %td= index_batch.indexbatch_id
+      %td= index_batch.created
+      %td= link_to 'Show', index_batch
+      %td= link_to 'Edit', edit_index_batch_path(index_batch)
+      %td= link_to 'Destroy', index_batch, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Index batch', new_index_batch_path

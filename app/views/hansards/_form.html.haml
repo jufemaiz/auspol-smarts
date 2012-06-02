@@ -1,0 +1,46 @@
+= form_for @hansard do |f|
+  -if @hansard.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@hansard.errors.count, "error")} prohibited this hansard from being saved:"
+      %ul
+        - @hansard.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :epobject_id
+    = f.text_field :epobject_id
+  .field
+    = f.label :git
+    = f.text_field :git
+  .field
+    = f.label :htype
+    = f.number_field :htype
+  .field
+    = f.label :speaker_id
+    = f.text_field :speaker_id
+  .field
+    = f.label :major
+    = f.number_field :major
+  .field
+    = f.label :section_id
+    = f.number_field :section_id
+  .field
+    = f.label :subsection_id
+    = f.number_field :subsection_id
+  .field
+    = f.label :hpos
+    = f.number_field :hpos
+  .field
+    = f.label :hdate
+    = f.date_select :hdate
+  .field
+    = f.label :htime
+    = f.time_select :htime
+  .field
+    = f.label :source_url
+    = f.text_field :source_url
+  .field
+    = f.label :minor
+    = f.number_field :minor
+  .actions
+    = f.submit 'Save'

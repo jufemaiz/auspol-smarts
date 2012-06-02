@@ -1,0 +1,31 @@
+= form_for @m_office do |f|
+  -if @m_office.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@m_office.errors.count, "error")} prohibited this m_office from being saved:"
+      %ul
+        - @m_office.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :moffice_id
+    = f.number_field :moffice_id
+  .field
+    = f.label :dept
+    = f.text_field :dept
+  .field
+    = f.label :position
+    = f.text_field :position
+  .field
+    = f.label :from_date
+    = f.date_select :from_date
+  .field
+    = f.label :to_date
+    = f.date_select :to_date
+  .field
+    = f.label :person
+    = f.text_field :person
+  .field
+    = f.label :source
+    = f.text_field :source
+  .actions
+    = f.submit 'Save'

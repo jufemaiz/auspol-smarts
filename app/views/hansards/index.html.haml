@@ -1,0 +1,41 @@
+%h1 Listing hansards
+
+%table
+  %tr
+    %th Epobject
+    %th Git
+    %th Htype
+    %th Speaker
+    %th Major
+    %th Section
+    %th Subsection
+    %th Hpos
+    %th Hdate
+    %th Htime
+    %th Source url
+    %th Minor
+    %th
+    %th
+    %th
+
+  - @hansards.each do |hansard|
+    %tr
+      %td= hansard.epobject_id
+      %td= hansard.git
+      %td= hansard.htype
+      %td= hansard.speaker_id
+      %td= hansard.major
+      %td= hansard.section_id
+      %td= hansard.subsection_id
+      %td= hansard.hpos
+      %td= hansard.hdate
+      %td= hansard.htime
+      %td= hansard.source_url
+      %td= hansard.minor
+      %td= link_to 'Show', hansard
+      %td= link_to 'Edit', edit_hansard_path(hansard)
+      %td= link_to 'Destroy', hansard, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Hansard', new_hansard_path

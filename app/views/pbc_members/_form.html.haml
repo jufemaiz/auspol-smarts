@@ -1,0 +1,25 @@
+= form_for @pbc_member do |f|
+  -if @pbc_member.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@pbc_member.errors.count, "error")} prohibited this pbc_member from being saved:"
+      %ul
+        - @pbc_member.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :member
+    = f.text_field :member
+  .field
+    = f.label :chairman
+    = f.check_box :chairman
+  .field
+    = f.label :bill
+    = f.text_field :bill
+  .field
+    = f.label :sitting
+    = f.text_field :sitting
+  .field
+    = f.label :attending
+    = f.check_box :attending
+  .actions
+    = f.submit 'Save'

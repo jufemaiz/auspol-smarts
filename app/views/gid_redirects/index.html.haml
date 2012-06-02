@@ -1,0 +1,25 @@
+%h1 Listing gid_redirects
+
+%table
+  %tr
+    %th Gid from
+    %th Gid to
+    %th Hdate
+    %th Major
+    %th
+    %th
+    %th
+
+  - @gid_redirects.each do |gid_redirect|
+    %tr
+      %td= gid_redirect.gid_from
+      %td= gid_redirect.gid_to
+      %td= gid_redirect.hdate
+      %td= gid_redirect.major
+      %td= link_to 'Show', gid_redirect
+      %td= link_to 'Edit', edit_gid_redirect_path(gid_redirect)
+      %td= link_to 'Destroy', gid_redirect, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Gid redirect', new_gid_redirect_path

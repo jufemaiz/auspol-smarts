@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Member:
+  = @pbc_member.member
+%p
+  %b Chairman:
+  = @pbc_member.chairman
+%p
+  %b Bill:
+  = @pbc_member.bill
+%p
+  %b Sitting:
+  = @pbc_member.sitting
+%p
+  %b Attending:
+  = @pbc_member.attending
+
+= link_to 'Edit', edit_pbc_member_path(@pbc_member)
+\|
+= link_to 'Back', pbc_members_path

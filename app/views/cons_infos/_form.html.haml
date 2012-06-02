@@ -1,0 +1,19 @@
+= form_for @cons_info do |f|
+  -if @cons_info.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@cons_info.errors.count, "error")} prohibited this cons_info from being saved:"
+      %ul
+        - @cons_info.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :constituency
+    = f.text_field :constituency
+  .field
+    = f.label :data_key
+    = f.text_field :data_key
+  .field
+    = f.label :data_value
+    = f.text_area :data_value
+  .actions
+    = f.submit 'Save'
