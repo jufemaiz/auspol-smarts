@@ -1,3 +1,5 @@
+import sys
+
 sentence = "I am a man more sinned against than sinning" +"."
 
 def to_cv(word):
@@ -75,8 +77,11 @@ def summarize(s):
 
 
 def main():
-    usersentence=""
-    usersentence=raw_input('Please enter a sentence or paragraph')
+    if len(sys.argv) == 1:
+      usersentence=""
+      usersentence=raw_input('Please enter a sentence or paragraph')
+    else:
+      usersentence = sys.argv[1]
     sentence = usersentence + "."
     summarize(sentence)
 
