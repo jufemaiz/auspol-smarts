@@ -1,4 +1,24 @@
 Myapp::Application.routes.draw do
+  resources :titles
+
+  resources :pbc_members
+
+  resources :bills
+
+  resources :index_batches
+
+  resources :postcode_lookups
+
+  resources :person_infos
+
+  resources :m_offices
+
+  resources :member_infos
+
+  resources :members
+
+  resources :cons_infos
+
   resources :hansards
 
   resources :gid_redirects
@@ -6,8 +26,6 @@ Myapp::Application.routes.draw do
   resources :ep_objects
 
   resources :constituencies
-
-  resources :rails
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
