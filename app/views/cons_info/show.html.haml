@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Constituency:
+  = @cons_info.constituency
+%p
+  %b Data key:
+  = @cons_info.data_key
+%p
+  %b Data value:
+  = @cons_info.data_value
+
+= link_to 'Edit', edit_cons_info_path(@cons_info)
+\|
+= link_to 'Back', cons_info_path

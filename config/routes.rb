@@ -17,7 +17,7 @@ Myapp::Application.routes.draw do
 
   resources :members
 
-  resources :cons_infos
+  resources :cons_info
 
   resources :hansards
 
