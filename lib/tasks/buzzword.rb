@@ -4,8 +4,11 @@ require '../../config/environment'
 require 'set'
 require 'pp'
 
+Static = '../../public/buzzstatic/'
+`mkdir -p #{Static}`
+
 kill = Set.new
-["Australia", "Australian","member","Minister"].each{|w| kill << w}
+["Australia", "Australian","member","Minister","motion"].each{|w| kill << w}
 Member.all.each do |member|
   kill << member.first_name
   kill << member.last_name
@@ -24,6 +27,11 @@ Member.all.each do |member|
     end
   end
   puts "#{member.first_name} #{member.last_name} (#{member.constituency})"
-  pp words.sort_by{|a,b|-b}.first(40)
+  json =  JSON.dump words.sort_by{|a,b|-b}.first(40)
+  puts json
+  file = File.open(File.join(Static, key+".json"), 'w')
+  file.write json
+  file.close
 end
+
 
