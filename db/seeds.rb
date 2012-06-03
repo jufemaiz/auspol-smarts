@@ -18,7 +18,7 @@ end
 # Electorates
 if Electorate.count == 0
   CSV.foreach(File.join(Rails.root,'db','seeds','electorates-from-aec.csv'), {:headers => true}) do |row|
-    Electorate.create(:title => row['name'], :state => row['state'], :area => row['area']) if row.size > 2ra
+    Electorate.create(:title => row['name'], :state => row['state'], :area => row['area']) if row.size > 2
   end
 end
 
