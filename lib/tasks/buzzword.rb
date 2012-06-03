@@ -5,6 +5,7 @@ require 'set'
 require 'pp'
 
 kill = Set.new
+["Australia", "Australian","member","Minister"].each{|w| kill << w}
 Member.all.each do |member|
   kill << member.first_name
   kill << member.last_name
@@ -23,6 +24,6 @@ Member.all.each do |member|
     end
   end
   puts "#{member.first_name} #{member.last_name} (#{member.constituency})"
-  pp words.sort_by{|a,b|-b}.first(20)
+  pp words.sort_by{|a,b|-b}.first(40)
 end
 
