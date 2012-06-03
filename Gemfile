@@ -1,7 +1,6 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
-gem "rubypython", "~> 0.6.2"
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -42,3 +41,4 @@ gem "haml-rails", ">= 0.3.4", :group => :development
 gem "bootstrap-sass", ">= 2.0.1"
 gem "will_paginate", ">= 3.0.3"
 gem "therubyracer", :group => :assets, :platform => :ruby
+gem "nokogiri"
