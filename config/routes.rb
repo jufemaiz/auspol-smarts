@@ -1,4 +1,6 @@
 Myapp::Application.routes.draw do
+  resources :electorates
+
   resources :titles
 
   resources :pbc_members

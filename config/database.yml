@@ -25,10 +25,10 @@ test:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: myapp_test
+  database: auspol_smarts_test
   pool: 5
-  username: root
-  password:
+  username: testing
+  password: testing
   socket: /tmp/mysql.sock
 
 production:

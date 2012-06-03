@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Title:
+  = @electorate.title
+%p
+  %b Description:
+  = @electorate.description
+%p
+  %b Polygon:
+  = @electorate.polygon
+
+= link_to 'Edit', edit_electorate_path(@electorate)
+\|
+= link_to 'Back', electorates_path
