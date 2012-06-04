@@ -3,6 +3,8 @@ import json
 import sys
 from nltk.corpus import cmudict
 from re import match
+global debug
+debug=0
 
 cmu = cmudict.dict()
 
@@ -28,9 +30,10 @@ def fkgrade(text):
         syllables = [syllable_count(word) for word in words]
     totalsyllables += sum(syllables)
     totalwords = float(totalwords)
-    print str(totalwords) + "Words"
-    print str(totalsentences) +"Sentences"
-    print str(totalsyllables) +"Syllables"
+    if debug==1:
+        print str(totalwords) + "Words"
+        print str(totalsentences) +"Sentences"
+        print str(totalsyllables) +"Syllables"
     return (0.39 * (totalwords / totalsentences)+ 11.8 * (totalsyllables / totalwords)- 11.59 )
 
 
