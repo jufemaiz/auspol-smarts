@@ -1,3 +1,104 @@
 // Place all the styles related to the Members controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+	background:url("/assets/wall.jpg") repeat;
+	font-family: 'Amatic SC',Arial,sans-serif;
+	color: #fff;
+	padding-bottom: 140px;
+}
+header {
+	
+	.board {
+		padding: 0 !important;
+	}
+	ul.navigation {
+		list-style: none;
+		font-size: 200%;
+		line-height: 300%;
+		padding: 0;
+		margin: 0;
+
+		li {
+			display: inline-block;
+			margin-right: 20px;
+		}
+	}
+
+}
+
+#content {
+	font-size: 200%;
+}
+
+footer {
+	background: url("/assets/crowd2.png") repeat-x scroll center -19px transparent;
+	height:138px;
+	width:100%;
+	position:static;
+	position:fixed;
+	bottom:0;
+	left:0;
+	height:117px;
+	width:100%;
+}
+
+.frame {
+	position: relative;
+	height: 184px;
+	width: 144px;
+	img.border {
+		position:absolute;
+		top: 0;
+		left: 0;
+		z-index: 2;
+	}
+	img.portrait {
+		position:absolute;
+		top: 7px;
+		left: 7px;
+		z-index: 1;
+		max-height: 170px;
+	}
+}
+	
+
+.wood {
+	-moz-box-shadow: 1px 1px 3px #4F2F00;
+	-webkit-box-shadow: 1px 1px 3px #4F2F00; 
+	box-shadow: 1px 1px 3px #4F2F00;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=40, Color='#4F2F00')";
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=4, Direction=40, Color='#4F2F00');
+	margin: 0 0 30px;
+	background:url("/assets/wood3.png") repeat scroll 0 0 #fff;
+	border-top:1px solid #EA904B;
+	border-bottom:1px solid #6D350A;
+	border-right:1px solid #E59354;
+	border-left:1px solid #6D350A;
+	.board {
+		-moz-box-shadow: inset 0px 0px 10px #000;
+		-webkit-box-shadow: inset 0px 0px 10px #000;
+		box-shadow: inset 0px 0px 10px #000;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Strength=10, Direction=0, Color='#000000')";
+		filter: progid:DXImageTransform.Microsoft.Shadow(Strength=10, Direction=0, Color='#000000');
+		padding: 25px 0 25px;
+		margin:10px;
+		background:url("/assets/board.jpg") repeat 50% 50% scroll #000;
+		border-top:3px solid #6D350A;
+		border-bottom:3px solid #E59354;
+		border-right:3px solid #6D350A;
+		border-left:3px solid #E59354;
+	}
+}
+
+dd {
+	line-height: 20px;
+}
+
+.map-container {
+	margin-left: 25px;
+	#map {
+		width: 100%;
+		height: 400px;
+	}	
+}

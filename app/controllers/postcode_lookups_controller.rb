@@ -2,22 +2,44 @@ class PostcodeLookupsController < ApplicationController
   # GET /postcode_lookups
   # GET /postcode_lookups.json
   def index
-    @postcode_lookups = PostcodeLookup.all
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @postcode_lookups }
+    @postcode_lookup = nil
+    
+    if params[:q]
+      if params[:q].match(/^\d{4}$/)
+        @postcode_lookup = PostcodeLookup.find_all_by_postcode(params[:q]).count
+      end
     end
+    
+    respond_to do |format|
+      if !@postcode_lookup.nil? && @postcode_lookup > 0
+        format.html { redirect_to postcode_path(params[:q]) }
+      elsif !params[:q].nil?
+        format.html { redirect_to postcodes_path, notice: 'Postcode is not correct format.' }
+      else
+        format.html # index.html.erb
+        # format.json { render json: @postcode_lookups }
+      end
+    end
+
   end
 
   # GET /postcode_lookups/1
   # GET /postcode_lookups/1.json
   def show
-    @postcode_lookup = PostcodeLookup.find(params[:id])
+    @postcodes = PostcodeLookup.find_all_by_postcode(params[:id])
+    logger.debug(@postcodes)
 
     respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @postcode_lookup }
+      if @postcodes.length == 0
+        format.html { redirect_to postcodes_path, notice: 'No postcodes registered.' }
+        format.json { render json: @postcodes }
+      elsif @postcodes.length > 1
+        format.html
+        format.json { render json: @postcodes }
+      else
+        format.html { redirect_to electorate_path(@postcodes.first["name"]) }
+        format.json { render json: @postcodes }
+      end
     end
   end
 

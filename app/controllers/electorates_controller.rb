@@ -13,7 +13,8 @@ class ElectoratesController < ApplicationController
   # GET /electorates/1
   # GET /electorates/1.json
   def show
-    @electorate = Electorate.find(params[:id])
+    @electorate = Electorate.find_by_title(params[:id])
+    @members = Member.find_all_by_constituency(@electorate.title)
 
     respond_to do |format|
       format.html # show.html.erb

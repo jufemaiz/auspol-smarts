@@ -1,0 +1,49 @@
+!!! 5
+%html
+	%head
+		%title Are our pollies smarter than a fifth grader?
+
+		%link{:type=>"text/css", :src=>"http://202.2.94.230/css/app.css"}
+		%link{:type=>"text/css", :src=>"http://202.2.94.230/css/css_002.css"}
+		%link{:type=>"text/css", :src=>"http://202.2.94.230/css/css.css"}
+		%link{:type=>"text/css", :src=>"http://202.2.94.230/css/font-awesome.css"}
+		%link{:href=>'http://fonts.googleapis.com/css?family=Amatic+SC:400,700|Coming+Soon', :rel=>'stylesheet', :type=>'text/css'}
+		= stylesheet_link_tag "application", :media => "all"
+		= stylesheet_link_tag "leaflet", :media => "all"
+
+		= javascript_include_tag "application"
+		= javascript_include_tag "leaflet"
+		
+		= csrf_meta_tags
+	  
+	%body
+		<!--[if lt IE 7]><div class="alert">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</div><![endif]-->
+		%header
+			.navbar.navbar-fixed-top
+				.navbar-inner
+					.container
+						%a{ :class => "brand", :href => "http://govhack.org" }
+							A Govhack Project
+		
+			.container
+				%section
+				.wood
+					.board
+						.row
+							%img{:src => "/assets/logo2.png", "style"=>"position:absolute; top: -120px; z-index: 5;"}
+							.span8.offset4
+								%ul.navigation
+									%li
+										%a{:href => "/" } Parliament
+									%li
+										%a{:href => "/electorates/" } Electorates
+									%li
+										%a{:href => "/members/" } Members
+									%li
+										%a{:href => "/parties/" } Party
+										
+		#content
+			.container
+				= yield
+	
+			%footer

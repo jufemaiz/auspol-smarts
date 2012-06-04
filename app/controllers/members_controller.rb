@@ -13,7 +13,8 @@ class MembersController < ApplicationController
   # GET /members/1
   # GET /members/1.json
   def show
-    @member = Member.find(params[:id])
+    @member = Member.find_by_aphkey(params[:id])
+    @speeches = Speech.find_all_by_member_id(@member.aphkey)
 
     respond_to do |format|
       format.html # show.html.erb

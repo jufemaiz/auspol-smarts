@@ -1,45 +1,23 @@
-%p#notice= notice
-
-%p
-  %b Member:
-  = @member.member_id
-%p
-  %b House:
-  = @member.house
-%p
-  %b First name:
-  = @member.first_name
-%p
-  %b Last name:
-  = @member.last_name
-%p
-  %b Constituency:
-  = @member.constituency
-%p
-  %b Party:
-  = @member.party
-%p
-  %b Entered house:
-  = @member.entered_house
-%p
-  %b Left house:
-  = @member.left_house
-%p
-  %b Enetered reason:
-  = @member.enetered_reason
-%p
-  %b Left reason:
-  = @member.left_reason
-%p
-  %b Person:
-  = @member.person_id
-%p
-  %b Title:
-  = @member.title
-%p
-  %b Lastupdate:
-  = @member.lastupdate
-
-= link_to 'Edit', edit_member_path(@member)
-\|
-= link_to 'Back', members_path
+.container
+	.wood
+		.board
+			.row
+				.span3.offset1
+					.frame
+						%image.border{:src => "http://202.2.94.230/images/mpborder.png"}
+						%image.portrait{:src => "http://parlinfo.aph.gov.au/parlInfo/download/handbook/allmps/#{@member.aphkey}/upload_ref_binary/#{@member.aphkey}.JPG"}
+					%h1="#{@member.first_name} #{@member.last_name}"
+					%p="(#{@member.party})"
+					
+					.frame
+						%image.border{:src => "http://202.2.94.230/images/mpborder.png"}
+						.map
+					%h2="The member for #{@member.constituency}"
+				.span7
+					%dl
+						%dt Speeches
+						%dd="We've indexed #{@speeches.count} speeches from the Member for #{@member.constituency}"
+						%dt Vocab
+						%dd
+							-wordcounts(@member.aphkey).each do |word, count|
+								%span= word

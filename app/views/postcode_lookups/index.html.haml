@@ -1,21 +1,16 @@
-%h1 Listing postcode_lookups
+.container
+	.wood
+		.board
+			.row
+				.span6.offset3
+					%h1 Enter your postcode to see how smart your politician is.
 
-%table
-  %tr
-    %th Postcode
-    %th Name
-    %th
-    %th
-    %th
-
-  - @postcode_lookups.each do |postcode_lookup|
-    %tr
-      %td= postcode_lookup.postcode
-      %td= postcode_lookup.name
-      %td= link_to 'Show', postcode_lookup
-      %td= link_to 'Edit', edit_postcode_lookup_path(postcode_lookup)
-      %td= link_to 'Destroy', postcode_lookup, :confirm => 'Are you sure?', :method => :delete
-
-%br
-
-= link_to 'New Postcode lookup', new_postcode_lookup_path
+					%form.well
+						%fieldset
+							%legend Search for a Pollie by a Postcode
+							.control-group
+								%label.control-label{:for => "q"}
+									Enter your postcode here
+								.controls
+									%input.input-xlarge{:type=>"text",:id => "q", :name => "q"}	
+									%intput.btn.btn-success{:type => "submit"} Go!

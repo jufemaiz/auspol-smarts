@@ -1,12 +1,15 @@
-%p#notice= notice
+.container
+	.wood
+		.board
+			.row
+				.span6.offset3
+					%h1 Multiple Electorates Exist
+					%p This postcode has multiple representatives. Please select from below.
 
-%p
-  %b Postcode:
-  = @postcode_lookup.postcode
-%p
-  %b Name:
-  = @postcode_lookup.name
+					%p#notice= notice
 
-= link_to 'Edit', edit_postcode_lookup_path(@postcode_lookup)
-\|
-= link_to 'Back', postcode_lookups_path
+					%ul
+						- @postcodes.each do |p|
+							%li
+								= link_to electorate_path(p.name.downcase) do
+									= "#{p.name} #{p.postcode}"

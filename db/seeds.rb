@@ -22,3 +22,10 @@ if Electorate.count == 0
   end
 end
 
+CSV.foreach(File.join(Rails.root,'db','seeds','electorates-from-aec.csv'), {:headers => true}) do |row|
+  m = Member.find_by_aphkey(row["member_id"])
+  unless m.nil?
+    m.electorate = row["electorate"]
+    m.save
+  end
+end

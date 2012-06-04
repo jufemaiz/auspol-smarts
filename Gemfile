@@ -36,8 +36,11 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+gem "less", "~> 2.2.1"
+gem "sass", "~> 3.1.19"
 gem "haml", ">= 3.1.5"
 gem "haml-rails", ">= 0.3.4", :group => :development
+gem "twitter-bootstrap-rails", "~> 2.0.8"
 gem "bootstrap-sass", ">= 2.0.1"
 gem "will_paginate", ">= 3.0.3"
 gem "therubyracer", :group => :assets, :platform => :ruby

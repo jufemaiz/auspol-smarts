@@ -1,15 +1,22 @@
-%p#notice= notice
+.container
+	.wood
+		.board
+			.row
+				.span4.offset
+					.map-container
+						#map
+				.span7
+					%p#notice= notice
 
-%p
-  %b Title:
-  = @electorate.title
-%p
-  %b Description:
-  = @electorate.description
-%p
-  %b Polygon:
-  = @electorate.polygon
+					%h1= "#{@electorate.title}, #{@electorate.state}"
 
-= link_to 'Edit', edit_electorate_path(@electorate)
-\|
-= link_to 'Back', electorates_path
+					%h2 Representatives (1998-2011)
+
+					- @members.sort{|x,y| x.last_name <=> y.last_name}.each do |m|
+						.span2
+							.frame
+								%image.border{:src => "http://202.2.94.230/images/mpborder.png"}
+								%image.portrait{:src => "http://parlinfo.aph.gov.au/parlInfo/download/handbook/allmps/#{m.aphkey}/upload_ref_binary/#{m.aphkey}.JPG"}
+							%h3=link_to "#{m.first_name} #{m.last_name}", member_path(m.aphkey)
+							%p="(#{m.party})"
+							%p="#{m.speeches.last.date.strftime("%m/%Y")} to #{m.speeches.first.date.strftime("%m/%Y")}"

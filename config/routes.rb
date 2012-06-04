@@ -1,34 +1,10 @@
 Myapp::Application.routes.draw do
+
   resources :electorates
-
-  resources :titles
-
-  resources :pbc_members
-
-  resources :bills
-
-  resources :index_batches
-
-  resources :postcode_lookups
-
-  resources :person_infos
-
-  resources :m_offices
-
-  resources :member_infos
-
   resources :members
-
-  resources :cons_info
-
   resources :hansards
-
-  resources :gid_redirects
-
-  resources :ep_objects
-
-  resources :constituencies
-
+  resources :postcodes,         :controller => "postcode_lookups"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

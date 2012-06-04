@@ -1,22 +1,14 @@
 %h1 Listing electorates
 
 %table
-  %tr
-    %th Title
-    %th Description
-    %th Polygon
-    %th
-    %th
-    %th
+	%tr
+		%th Title
+		%th State
 
-  - @electorates.each do |electorate|
-    %tr
-      %td= electorate.title
-      %td= electorate.description
-      %td= electorate.polygon
-      %td= link_to 'Show', electorate
-      %td= link_to 'Edit', edit_electorate_path(electorate)
-      %td= link_to 'Destroy', electorate, :confirm => 'Are you sure?', :method => :delete
+	- @electorates.each do |electorate|
+		%tr
+			%th= link_to "#{electorate.title}", electorate_path(electorate.title.downcase)
+			%td= electorate.state
 
 %br
 
