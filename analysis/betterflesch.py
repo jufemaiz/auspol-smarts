@@ -1,18 +1,39 @@
 import nltk
 import json
 import sys
+import _mysql
 from nltk.corpus import cmudict
 from re import match
 global debug
 debug=0
-
+global db
+db=_mysql.connect(host="localhost",port=3306,user="govhacker",passwd="govhacker",db="govhack")
 cmu = cmudict.dict()
+workfile=open('output.txt','w')
+
+def getmembers():
+    querystring="SELECT aphkey, first_name, last_name from members"
+    db.query(querystring)
+    memberlist=db.store_result()
+    return(memberlist)
+
+
+def getcorpus(memberid):
+    querystring="SELECT content FROM speeches where member_id='"+str(memberid)+"' and length(content) > 5 LIMIT 0, 10000 "
+    db.query(querystring)
+    dbresult=db.store_result()
+    return(dbresult)
 
 def syllable_count(word):
-	reduced = reduce(word)
-	if (not len(reduced)) or (not reduced in cmu):
-		return 0
-	return len([x for x in list(''.join(list(cmu[reduced])[-1])) if match(r'\d', x)])
+    reduced = reduce(word)
+    if debug==20:
+        print reduced
+    if (not len(reduced)) or (not reduced in cmu):
+        return 1.6
+    newlength=len([x for x in list(''.join(list(cmu[reduced])[-1])) if match(r'\d', x)])
+    if debug==20:
+        print newlength
+    return(newlength)
 
 def reduce(word):
 	return ''.join([x for x in word.lower() if match(r'\w', x)])
@@ -28,13 +49,15 @@ def fkgrade(text):
         words = [word for word in words if word != '']
         totalwords += len(words)
         syllables = [syllable_count(word) for word in words]
-    totalsyllables += sum(syllables)
-    totalwords = float(totalwords)
-    if debug==1:
+        totalsyllables += sum(syllables)
+        totalwords = float(totalwords)
+        score = (0.39 * (totalwords / totalsentences)+ 11.8 * (totalsyllables / totalwords)- 15.59 )
+    if debug==5:
         print str(totalwords) + "Words"
         print str(totalsentences) +"Sentences"
         print str(totalsyllables) +"Syllables"
-    return (0.39 * (totalwords / totalsentences)+ 11.8 * (totalsyllables / totalwords)- 11.59 )
+        print str(score) + " FK Score"
+    return (score)
 
 
 def main():
@@ -49,4 +72,36 @@ def main():
     print result
 
 
-main()
+#main()
+memberlist=getmembers()
+for i in range(int(memberlist.num_rows())):
+    for i in range (0,19):
+        member=memberlist.fetch_row()
+    memberid=member[0][0]
+    corpus=getcorpus(memberid)
+    fkscorelist=list()
+    for i in range(1,int(corpus.num_rows())):
+        if debug==10:
+            print str(i) +"/" +str(int(corpus.num_rows()))
+        speechrow=corpus.fetch_row();
+        speech=speechrow[0][0]
+        if len(speech) > 1:
+            try:
+                speechscore=fkgrade(speech)
+                fkscorelist.append(speechscore)
+            except:
+                print "Something went wrong scoring this speech"
+    try:
+        fkscore=float(sum(fkscorelist) / len(fkscorelist))
+        workline=str((memberid)+str(member[0][1])+str(member[0][2])+str(fkscore))
+        workfile.write(workline)
+        workfile.write('\n')
+
+    except:
+        print "Something went wrong calculating this FK Score."
+        print str(memberid)+str(member[0][1])+str(member[0][2])
+        print str(sum(fkscorelist)) + " FK Score Combined"
+        print str(len(fkscorelist)) + " List length"
+    print str(memberid)+str(member[0][1])+str(member[0][2])+str(fkscore)
+
+workfile.close()
