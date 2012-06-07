@@ -4,7 +4,7 @@ module ApplicationHelper
     unless aphkey.nil?
       m = Member.find_by_aphkey(aphkey)
       kill = Set.new
-      ["Australia", "Australian","member","Minister","motion"].each{|w| kill << w.downcase}
+      ["Australia", "Australian","member","Minister","motion","members","ministers","motions"].each{|w| kill << w.downcase}
       kill << m.first_name
       kill << m.last_name
       kill << m.constituency
