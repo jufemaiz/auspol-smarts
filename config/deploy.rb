@@ -80,7 +80,7 @@ default_run_options[:pty] = true
 
 # Setup Shared Folders
 #   that should be created inside the shared_path
-directory_configuration = %w(db config system public/)
+directory_configuration = %w(db config system log public/)
 
 # Setup Symlinks
 #   that should be created after each deployment
