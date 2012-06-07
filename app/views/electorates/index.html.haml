@@ -1,15 +1,10 @@
 %h1 Listing electorates
 
-%table
-	%tr
-		%th Title
-		%th State
-
-	- @electorates.each do |electorate|
-		%tr
-			%th= link_to "#{electorate.title}", electorate_path(electorate.title.downcase)
-			%td= electorate.state
-
-%br
-
-= link_to 'New Electorate', new_electorate_path
+.container
+	.wood
+		.board
+			.row
+				- @electorates.each_with_index do |electorate, i|
+					.span3.offset1.space
+						=link_to "#{electorate.title}", electorate_path(electorate.title.downcase)
+						=electorate.state

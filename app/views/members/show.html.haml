@@ -9,10 +9,9 @@
 					%h1="#{@member.first_name} #{@member.last_name}"
 					%p="(#{@member.party})"
 					
-					.frame
-						%image.border{:src => "http://202.2.94.230/images/mpborder.png"}
-						.map
-					%h2="The member for #{@member.constituency}"
+					%h2
+						The member for
+						=link_to @member.constituency, {:controller => :electorates, :action => :show, :id => @member.constituency}
 				.span7
 					%dl
 						%dt Speeches

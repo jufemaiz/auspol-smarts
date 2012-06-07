@@ -2,22 +2,26 @@
 	.wood
 		.board
 			.row
-				.span10.offset1
-					%h1 Listing members
+				.span2.offset1
+					%h1="Listing members#{' in the '+@party.name if @party}"
+				.span7.offset1
+					-@parties.each do |party|
+						.span3
+							%p
+								=link_to(party.name, {:controller => :members, :action => :party, :id => party.party})
+.container
+	.wood
+		.board
+			.row
+				- @members.each do |member|
+					.span3.offset1
+						%h1="#{member.first_name} #{member.last_name}"
+						/%p="(#{member.party})"
+						%p
+							=link_to("(#{member.party})", {:controller => :members, :action => :party, :id => member.party})
+						
+						%h2
+							=link_to("The member for #{member.constituency}", {:controller => :members, :action => :show, :id => member.aphkey})
+						%br
 
-					%table
-						%tr
-							%th House
-							%th Name
-							%th Constituency
-							%th Party
-
-						- @members.each do |member|
-							%tr
-								%td= (member.house == 0 ? "House of Reps" : "Senate")
-								%td= "#{member.first_name} #{member.last_name}"
-								%td= member.constituency
-								%td= member.party
-					%br
-
-					= link_to 'New Member', new_member_path
+			= link_to 'New Member', new_member_path

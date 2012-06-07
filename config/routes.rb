@@ -4,6 +4,8 @@ Myapp::Application.routes.draw do
   resources :members
   resources :hansards
   resources :postcodes,         :controller => "postcode_lookups"
+  #resources :parties, :controller => "members", :action => "party"
+  match "party/:id" => "members#party"
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

@@ -2,10 +2,22 @@ class MembersController < ApplicationController
   # GET /members
   # GET /members.json
   def index
-    @members = Member.all
+    @members = Member.where("party != '' and party != 'N/A'")
+    @parties = Party.all
 
     respond_to do |format|
       format.html # index.html.erb
+      format.json { render json: @members }
+    end
+  end
+
+  def party
+    @party = Party.find_by_party(params[:id])
+    @parties = Party.all
+    @members = Member.where(party: @party.party)
+
+    respond_to do |format|
+      format.html { render 'index.html.erb'}
       format.json { render json: @members }
     end
   end
