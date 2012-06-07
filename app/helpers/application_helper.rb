@@ -11,12 +11,8 @@ module ApplicationHelper
 
       key = m.aphkey
       words = Hash.new(0)
-      Speech.where(:member_id => aphkey).each do |speech|
-        speech.content.split(" ").each do |word|
-          if !kill.include? word and word.length > 4
-            words[word] += 1 
-          end
-        end
+      Speech.where(:member_id => m.aphkey).each do |speech|
+        speech.content.split(/[\W]+/).delete_if{|w| ((w.length <= 4) || (kill.include?(w))) }.each{|w| words[w]+=1 }
       end
       return words.sort_by{|x,y| y}.last(50).reverse
     end
