@@ -1,3 +1,4 @@
+-@words = wordcounts(@member.aphkey)
 .container
 	.wood
 		.board
@@ -19,5 +20,54 @@
 						%dt Vocab
 						%dd
 							/ = wordcounts(@member.aphkey).inspect
-							-wordcounts(@member.aphkey).each do |word, count|
+							-@words.each do |word, count|
 								%span= word
+	.wood
+		.board
+			.row-fluid
+				.span4.bottom
+					.frame
+						%image.border{:src => "http://202.2.94.230/images/mpborder.png"}
+						%image.portrait{:src => "http://parlinfo.aph.gov.au/parlInfo/download/handbook/allmps/#{@member.aphkey}/upload_ref_binary/#{@member.aphkey}.JPG"}
+					%h1="#{@member.first_name} #{@member.last_name}"
+					%p="(#{@member.party})"
+					
+					%h2.fontface.left
+						The member for
+						=link_to @member.constituency, {:controller => :electorates, :action => :show, :id => @member.constituency}
+				.span8
+					%h2.fontface.right="Impressive vernacular"
+				.span8#words
+				%script
+					="window.items = ['#{@words.map{|a| a.first}.join("','")}'];"
+:javascript
+				var colors = ["#A2D39C","#FFF79A","#F7977A", "#6ECFF6", "#A187BE"];
+				var items = window.items;
+				d3.layout.cloud().size([500, 400])
+					.words(items.map(function(d) {
+					return {text: d, size: 10 + Math.random() * 90};
+					}))
+					.rotate(function() { return ~~(Math.random() * 2) * 90; })
+					.fontSize(function(d) { return d.size; })
+					.on("end", draw)
+					.start();
+						
+				function draw(words) {
+					d3.select("#words").append("svg")
+						.attr("width", 600)
+						.attr("height", 480)
+						.append("g")
+						.attr("transform", "translate(350,280)")
+						.selectAll("text")
+						.data(words)
+						.enter().append("text")
+						.style("font-size", function(d) { return d.size + "px"; })
+						.style("font-family", function(d) { return "Amatic SC"; })
+						//.style("fill", "#ffffff")
+						.style("fill", function(d) { return colors[Math.floor(Math.random()*colors.length)]; })
+						.attr("text-anchor", "middle")
+						.attr("transform", function(d) {
+						return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+						})
+						.text(function(d) { return d.text; });
+						}
