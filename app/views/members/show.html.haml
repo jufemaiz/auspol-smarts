@@ -19,6 +19,6 @@
 						%dd="We've indexed #{@speeches.count} speeches from the Member for #{@member.constituency}"
 						%dt Vocab
 						%dd
-							= wordcounts(@member.aphkey).inspect
-							/ -wordcounts(@member.aphkey).each do |word, count|
-							/ 	%span= word
+							/ = wordcounts(@member.aphkey).inspect
+							-wordcounts(@member.aphkey).each do |word, count|
+								%span= word
